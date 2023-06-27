@@ -1,3 +1,4 @@
+import { left } from "@popperjs/core";
 import "../style/index.css";
 
 /**
@@ -28,15 +29,78 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
+  let Name;
+  if (variables.name == null) {
+    Name = "First Name";
+  } else {
+    Name = variables.name;
+  }
+  let LastN;
+  if (variables.lastname == null) {
+    LastN = "Last Name";
+  } else {
+    LastN = variables.lastname;
+  }
+  let place = "right";
+  if (variables.socialMediaPosition == left) {
+    place = "left";
+  }
 
+  let Twitter;
+  if (variables.twitter == null) {
+    Twitter = "Twitter";
+  } else {
+    Twitter = variables.twitter;
+  }
+  let Github;
+  if (variables.github == null) {
+    Github = "Github";
+  } else {
+    Github = variables.github;
+  }
+  let LinkedIn;
+  if (variables.linkedin == null) {
+    LinkedIn = "Linkedin";
+  } else {
+    LinkedIn = variables.linkedin;
+  }
+  let Instagram;
+  if (variables.instagram == null) {
+    Instagram = "Instagram";
+  } else {
+    Instagram = variables.instagram;
+  }
+
+  let Role;
+  if (variables.role == null) {
+    Role = "Web developer";
+  } else {
+    Role = variables.role;
+  }
+  let City;
+  if (variables.city == null) {
+    City = "Miami";
+  } else {
+    City = variables.city;
+  }
+  let Country;
+  if (variables.country == null) {
+    Country = "USA";
+  } else {
+    Country = variables.country;
+  }
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
+          <h1>${Name} ${LastN}</h1>
+          <h3>${Twitter} </h3>
+          <h3>${Github} </h3>
+          <h3>${LinkedIn} </h3>
+          <h3>${Instagram} </h3>
+          <h2>${Role}</h2>
+          <h3>${City}, ${Country}</h3>
+          <ul class="position-${place}">
             <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
             <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
